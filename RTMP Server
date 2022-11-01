@@ -1,0 +1,9 @@
+
+### RTMP Server
+ffmpeg -f flv -listen 1 -i rtmp://192.168.0.52/myapp/mystream1 -c:v copy -c:a aac -listen 1 -ar 44100 -ab 64000 -f flv rtmp://127.0.0.1:10000/live
+
+### RTMP Pusher
+ffmpeg -re -i crowdrun.mp4 -c:v libx264 -c:v aac -f flv rtmp://192.168.0.52/myapp/mystream1
+
+### RTMP client
+ffmpeg -re -i crowdrun.mp4 -c:v libx264 -c:v aac -f flv rtmp://127.0.0.1:10000/live
